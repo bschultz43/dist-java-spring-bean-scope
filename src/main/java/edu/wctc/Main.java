@@ -1,12 +1,10 @@
-package org.example;
+package edu.wctc;
 
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 public class Main {
     public static void main(String[] args) {
-        AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext();
-        context.register(AppConfig.class);
-        context.refresh();
+        AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
 
         for (int i = 0; i < 5; i++) {
             PrototypeBean pb = context.getBean(PrototypeBean.class);
@@ -16,7 +14,6 @@ public class Main {
         for (int i = 0; i < 5; i++) {
             SingletonBean sb = context.getBean(SingletonBean.class);
             System.out.println(sb.hashCode());
-
         }
     }
 }
